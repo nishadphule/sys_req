@@ -1,0 +1,90 @@
+
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Password Generator</h2>
+    <div id="options">
+      <input type="checkbox" id="includeNumbers" checked>
+      <label for="includeNumbers">Include Numbers</label>
+
+      <input type="checkbox" id="includeSmallLetters" checked>
+      <label for="includeSmallLetters">Include Small Alphabets</label>
+
+      <input type="checkbox" id="includeCapitalLetters" checked>
+      <label for="includeCapitalLetters">Include Capital Letters</label>
+      
+    </div>
+    <button id="generateButton">Generate Password</button>
+    <div id="passwordDisplay"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+css
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #options {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    margin-right: 10px;
+  }
+  
+  #passwordDisplay {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+js
+document.getElementById('generateButton').addEventListener('click', function() {
+    const includeNumbers = document.getElementById('includeNumbers').checked;
+    const includeSmallLetters = document.getElementById('includeSmallLetters').checked;
+    const includeCapitalLetters = document.getElementById('includeCapitalLetters').checked;
+  
+    let characters = '';
+  
+    if (includeNumbers) characters += '0123456789';
+    if (includeSmallLetters) characters += 'abcdefghijklmnopqrstuvwxyz';
+    if (includeCapitalLetters) characters += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  
+    let password = '';
+  
+    for (let i = 0; i < 6; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      password += characters[randomIndex];
+    }
+  
+    document.getElementById('passwordDisplay').textContent = password;
+  });
+ 
