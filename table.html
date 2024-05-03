@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<body>
+    <input type ="button" onclick = "gen_tabe();" value = "generate table">
+    <script type = "text/javascript">
+    function gen_tabe(){
+        var ele = document.createElement("table");
+        var tbod = document.createElement("tbody");
+        for(var count = 0 ; count < 2 ; count++){
+            var row = document.createElement("tr");
+            for(var j = 0 ; j < 2 ; j++){
+                var cell = document.createElement("td")
+                var data = document.createTextNode("This is row " + count + " and col " + j);
+                cell.appendChild(data);
+                row.appendChild(cell);
+            }
+            tbod.appendChild(row);
+        }
+        ele.appendChild(tbod);
+        document.body.appendChild(ele);
+        ele.setAttribute("border" , "2");
+    }
+    </script>
+</body>
